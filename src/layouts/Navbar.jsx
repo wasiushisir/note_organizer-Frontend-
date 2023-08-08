@@ -44,9 +44,11 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl hover:bg-warning">
-          daisyUI
-        </a>
+        <Link to="/home">
+          <a className="btn btn-ghost normal-case text-xl hover:bg-warning">
+            daisyUI
+          </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-2 text-black">
