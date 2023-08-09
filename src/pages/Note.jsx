@@ -144,6 +144,9 @@ export default function Note({ notes }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+        {filter.length === 0 && (
+          <h1 className="text-3xl font-semibold text-center">No notes yet</h1>
+        )}
         {filter?.map((note) => (
           <>
             <div className="rounded-2xl h-max w-full md:w-[400px]  flex flex-col items-center cursor-pointer overflow-hidden shadow-md border border-gray-100   gap-2 pb-3">

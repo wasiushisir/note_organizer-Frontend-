@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const LoginHandler = async (data) => {
   const res = await fetch(
     "https://note-organizer-zkht.onrender.com/api/users/login",
@@ -11,6 +13,7 @@ export const LoginHandler = async (data) => {
   );
 
   const datas = await res.json();
+  toast("login successfully");
 
   console.log(datas);
   const accessToken = datas.token;

@@ -1,4 +1,6 @@
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./Navbar";
 
 export default function NextLayout() {
@@ -8,6 +10,7 @@ export default function NextLayout() {
       <div className="pt-16">
         <Outlet />
       </div>
+      <ToastContainer />
     </div>
   );
 }
