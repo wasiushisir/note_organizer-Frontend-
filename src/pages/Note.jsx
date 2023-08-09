@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Note({ notes }) {
   const [filter, setFilter] = useState(notes.data);
@@ -8,7 +9,7 @@ export default function Note({ notes }) {
   useEffect(() => {
     const searchData = async () => {
       const res = await fetch(
-        `http://localhost:3000/api/note?searchTerm=${inputValue}`,
+        `https://note-organizer-zkht.onrender.com/api/note?searchTerm=${inputValue}`,
         {
           method: "GET",
           headers: {
@@ -29,7 +30,7 @@ export default function Note({ notes }) {
     if (category !== "All") {
       const filtering = async () => {
         const res = await fetch(
-          `http://localhost:3000/api/note?category=${category}`,
+          `https://note-organizer-zkht.onrender.com/api/note?category=${category}`,
           {
             method: "GET",
             headers: {
@@ -55,12 +56,15 @@ export default function Note({ notes }) {
   const handleDelete = async (id) => {
     // const result = await DeleteHandler(id, refetch);
     // console.log(result);
-    const res = await fetch(`http://localhost:3000/api/note/${id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    });
+    const res = await fetch(
+      `https://note-organizer-zkht.onrender.com/api/note/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    );
 
     const datas = await res.json();
     console.log(datas);
@@ -72,7 +76,7 @@ export default function Note({ notes }) {
     }
   };
 
-  console.log(filter);
+  // console.log(filter);
 
   const propertyToMakeUnique = "category";
 
@@ -80,11 +84,10 @@ export default function Note({ notes }) {
   const uniqueValuesSet = new Set();
 
   // Iterate through the array and add the chosen property's value to the Set
-  notes?.data.forEach((obj) => {
+  notes?.data?.forEach((obj) => {
     uniqueValuesSet.add(obj[propertyToMakeUnique]);
   });
 
-  // Convert the Set back to an array
   const uniqueValuesArray = Array.from(uniqueValuesSet);
 
   console.log(uniqueValuesArray);
@@ -101,7 +104,7 @@ export default function Note({ notes }) {
               onChange={(e) => setInputValue(e.target.value)}
               type="text"
               placeholder="Search…"
-              className="input input-bordered w-[450px]"
+              className="input input-bordered w-[200px] md:w-[450px]"
             />
             <button className="btn btn-square">
               <svg
@@ -126,12 +129,12 @@ export default function Note({ notes }) {
       <div className="flex justify-end">
         <select
           onChange={(e) => setCategory(e.target.value)}
-          className="select select-bordered w-[160px] max-w-xs"
+          className="select select-bordered w-[100px] md:w-[160px]  "
         >
-          <option disabled selected>
+          <option className="" disabled selected>
             Select Category
           </option>
-          {uniqueValuesArray.map((note) => (
+          {uniqueValuesArray?.map((note) => (
             <>
               <option>{note}</option>
             </>
@@ -143,7 +146,7 @@ export default function Note({ notes }) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
         {filter?.map((note) => (
           <>
-            <div className="rounded-2xl h-max w-[400px]  flex flex-col items-center cursor-pointer overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all gap-2 pb-3">
+            <div className="rounded-2xl h-max w-full md:w-[400px]  flex flex-col items-center cursor-pointer overflow-hidden shadow-md border border-gray-100   gap-2 pb-3">
               <h1 className="text-xl font-semibold">Title: {note?.title}</h1>
               <p className="text-md font-medium">Category: {note?.category}</p>
               <p className="text-md font-medium">Text: {note?.text}</p>
@@ -151,12 +154,19 @@ export default function Note({ notes }) {
                 <p className="px-3 w-max">File:{note.fileData}</p>
               </div>
 
-              <button
-                onClick={() => handleDelete(note._id)}
-                className="btn btn-warning"
-              >
-                Delete
-              </button>
+              <div className="flex justify-center items-center space-x-2">
+                <button
+                  onClick={() => handleDelete(note._id)}
+                  className="btn btn-warning  md:btn-sm  btn-xs"
+                >
+                  Delete
+                </button>
+                <Link to={`/home/editNote/${note._id}`}>
+                  <button className="btn btn-success md:btn-sm  btn-xs">
+                    Update
+                  </button>
+                </Link>
+              </div>
             </div>
           </>
         ))}

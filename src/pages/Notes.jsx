@@ -7,7 +7,7 @@ export default function Notes() {
     isLoading,
     refetch,
   } = useQuery("notes", () =>
-    fetch("http://localhost:3000/api/note", {
+    fetch("https://note-organizer-zkht.onrender.com/api/note", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

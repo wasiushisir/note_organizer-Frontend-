@@ -35,30 +35,26 @@ export default function Navbar() {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-
-            <li>
-              <a>Item 3</a>
-            </li>
+            <Link to="/home/addNote">
+              <li>
+                <a>Add Note</a>
+              </li>
+            </Link>
           </ul>
         </div>
         <Link to="/home">
           <a className="btn btn-ghost normal-case text-xl hover:bg-warning">
-            daisyUI
+            iNote
           </a>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-2 text-black">
-          <li>
-            <a className="text-[18px] hover:bg-warning">Item 1</a>
-          </li>
-
-          <li>
-            <a className="text-[18px] hover:bg-warning">Item 3</a>
-          </li>
+          <Link to="/home/addNote">
+            <li>
+              <a className="text-[18px] hover:bg-warning">Add Note</a>
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="navbar-end">

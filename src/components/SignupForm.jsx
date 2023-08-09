@@ -23,19 +23,19 @@ export default function SignUpForm() {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
         {/* <input defaultValue="test" {...register("example")} /> */}
 
-        <div className="form-control w-full ">
+        <div className="form-control w-[220px]  md:w-full ">
           <label className="label">
             <span className="label-text">Name</span>
           </label>
           <input
             type="text"
             placeholder="Type here"
-            className="input input-bordered w-[400px] "
+            className="input input-bordered  w-[250px] md:w-[400px] "
             {...register("name", { required: true })}
           />
           {errors.name && <span>This field is required</span>}
@@ -48,7 +48,7 @@ export default function SignUpForm() {
           <input
             type="text"
             placeholder="Type here"
-            className="input input-bordered w-[400px] "
+            className="input input-bordered w-[250px] md:w-[400px]"
             {...register("email", { required: true })}
           />
           {errors.password && <span>This field is required</span>}
@@ -61,7 +61,7 @@ export default function SignUpForm() {
           <input
             type="password"
             placeholder="Type here"
-            className="input input-bordered w-[400px] "
+            className="input input-bordered w-[250px] md:w-[400px] "
             {...register("password")}
           />
           {errors.password && <span>This field is required</span>}

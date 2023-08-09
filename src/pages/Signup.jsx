@@ -5,7 +5,7 @@ export default function Signup() {
     <div className="flex justify-center items-center mt-[100px]">
       {/* <SignUpForm /> */}
 
-      <div className="card w-[500px] bg-base-100 shadow-xl">
+      <div className="card w-[300px] md:w-[500px] bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
           <h1 className="text-3xl font-bold">Signup</h1>
         </figure>

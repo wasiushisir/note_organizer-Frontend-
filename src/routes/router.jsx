@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Home from "../pages/Home";
 import AddNewNote from "../pages/AddNewNote";
 import Notes from "../pages/Notes";
+import EditNote from "../pages/EditNote";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/home/addNote",
         element: <AddNewNote />,
+      },
+      {
+        path: "/home/editNote/:id",
+        element: <EditNote />,
       },
     ],
   },

@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 export default function NextLayout() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Navbar />
       <div className="pt-16">
         <Outlet />

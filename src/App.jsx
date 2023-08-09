@@ -4,7 +4,9 @@ import MainLayout from "./layouts/MainLayout";
 function App() {
   return (
     <>
-      <MainLayout />
+      <div className="overflow-x-hidden">
+        <MainLayout />
+      </div>
     </>
   );
 }
